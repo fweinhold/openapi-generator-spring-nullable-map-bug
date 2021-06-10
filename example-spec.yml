@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: test
+  description:
+  version: 1.0.0
+
+paths:
+  /test/:
+    get:
+      description: just a test to show the error
+      operationId: locateDevice
+      parameters:
+        - name: test
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+        404:
+          description: not found
+        400:
+          description: Illegal Query
+        default:
+          description: internal error
+
+components:
+  schemas:
+    SomeTypeContainingANullableMap:
+      type: object
+      properties:
+        aMap:
+          $ref: "#/components/schemas/MapValue"
+    MapValue:
+      type: object
+      additionalProperties:
+        $ref: "#/components/schemas/MappedType"
+
+
+
+      nullable: true
+
+
+
+    MappedType:
+      type: object
+      properties:
+        someProperty:
+          type: string
+          nullable: true
+
+
+
