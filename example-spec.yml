@@ -2,7 +2,6 @@ openapi: 3.0.3
 info:
   title: test
   version: 1.0.0
-
 paths:
   /test/:
     get:
@@ -12,11 +11,10 @@ paths:
           in: query
           required: true
           schema:
-            type: SomeTypeContainingANullableMap
+            $ref: "#/components/schemas/SomeTypeContainingANullableMap"
       responses:
         200:
           description: OK
-
 components:
   schemas:
     SomeTypeContainingANullableMap:
